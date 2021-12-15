@@ -33,7 +33,9 @@ namespace LicenseHeaderManager.Tests
       // In order to make the "await LicenseHeadersPackage.Instance.JoinableTaskFactory.SwitchToMainThreadAsync();" call in
       // LinkedFileHandler.HandleAsync work, we need to set the private JoinableTaskFactory property accordingly.
       // Source: https://github.com/microsoft/vs-threading/blob/main/doc/testing_vs.md
+#pragma warning disable VSSDK005
       var jtc = new JoinableTaskContext();
+#pragma warning restore VSSDK005
       SetPrivateSetPackageProperty (nameof(ILicenseHeaderExtension.JoinableTaskFactory), jtc.Factory);
     }
 
